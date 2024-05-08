@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ecf0f1;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #resumeForm {
+            background-color: #d6eaff; /* Light blue background for the form */
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            color: #3498db; /* Blue labels */
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        #resumeOutput {
+            display: none;
+            padding: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="resumeForm">
+        <h1>Resume Builder</h1>
+        <form id="personalInfoForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+        </form>
+        
+        <form id="objectiveForm">
+            <h2>Objective/Summary</h2>
+            <label for="objective">Objective/Summary:</label>
+            <textarea id="objective" name="objective"></textarea><br>
+        </form>
+
+        <form id="educationForm">
+            <h2>Education</h2>
+            <label for="education">Education:</label>
+            <textarea id="education" name="education"></textarea><br>
+        </form>
+
+        <form id="workExperienceForm">
+            <h2>Work Experience</h2>
+            <label for="workExperience">Work Experience:</label>
+            <textarea id="workExperience" name="workExperience"></textarea><br>
+        </form>
+
+        <form id="skillsForm">
+            <h2>Skills</h2>
+            <label for="skills">Skills:</label>
+            <textarea id="skills" name="skills"></textarea><br>
+        </form>
+
+        <form id="achievementsForm">
+            <h2>Achievements/Awards</h2>
+            <label for="achievements">Achievements/Awards:</label>
+            <textarea id="achievements" name="achievements"></textarea><br>
+        </form>
+
+        <form id="projectsForm">
+            <h2>Projects/Publications</h2>
+            <label for="projects">Projects/Publications:</label>
+            <textarea id="projects" name="projects"></textarea><br>
+        </form>
+
+        <form id="referencesForm">
+            <h2>References</h2>
+            <label for="references">References:</label>
+            <textarea id="references" name="references"></textarea><br>
+        </form>
+
+        <form id="submitForm">
+            <input type="submit" value="Generate Resume">
+        </form>
+
+        <div id="resumeOutput"></div>
+        
+        <!-- Copyright Notice -->
+        <div class="copyright">
+            &copy; 2023 Created By: Dan Finn
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var fullName = document.getElementById('fullName').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var objective = document.getElementById('objective').value;
+            var education = document.getElementById('education').value;
+            var workExperience = document.getElementById('workExperience').value;
+            var skills = document.getElementById('skills').value;
+            var achievements = document.getElementById('achievements').value;
+            var projects = document.getElementById('projects').value;
+            var references = document.getElementById('references').value;
+
+            var resumeHTML = `
+                <h2>Personal Information</h2>
+                <p><strong>Name:</strong> ${fullName}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <h2>Objective/Summary</h2>
+                <p>${objective}</p>
+                <h2>Education</h2>
+                <p>${education}</p>
+                <h2>Work Experience</h2>
+                <p>${workExperience}</p>
+                <h2>Skills</h2>
+                <p>${skills}</p>
+                <h2>Achievements/Awards</h2>
+                <p>${achievements}</p>
+                <h2>Projects/Publications</h2>
+                <p>${projects}</p>
+                <h2>References</h2>
+                <p>${references}</p>
+            `;
+
+            document.getElementById('resumeOutput').innerHTML = resumeHTML;
+            document.getElementById('resumeOutput').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
